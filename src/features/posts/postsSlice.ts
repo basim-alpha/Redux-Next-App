@@ -8,7 +8,7 @@ const POSTS_URL = 'https://jsonplaceholder.typicode.com/posts';
 
 
 interface Post {
-    id: string;
+    id: number;
     title: string;
     content: string;
     userId: string;
@@ -70,6 +70,28 @@ export const addNewPost: any = createAsyncThunk('posts/addNewPost', async (initi
     return response.data
 })
 
+export const updatePost = createAsyncThunk('posts/updatePost', async (initialPost: any) => {
+    const  id: any  = initialPost;
+    try {
+        const response = await axios.put(`${POSTS_URL}/${id}`, initialPost)
+        return response.data
+    } catch (err) {
+        //return err.message;
+        return initialPost; // only for testing Redux!
+    }
+})
+
+export const deletePost = createAsyncThunk('posts/deletePost', async (initialPost: any) => {
+    const  id: any  = initialPost;
+    try {
+        const response = await axios.delete(`${POSTS_URL}/${id}`)
+        if (response?.status === 200) return initialPost;
+        return `${response?.status}: ${response?.statusText}`;
+    } catch (err: any) {
+        return err.message;
+    }
+})
+
 const postsSlice = createSlice({
     name: "posts",
     initialState,
@@ -81,7 +103,7 @@ const postsSlice = createSlice({
             prepare: (title:string, content:string, userId: string): {payload: Post} => {
                 return {
                     payload: {
-                        id: nanoid(),
+                        id: Number(nanoid()),
                         title,
                         content,
                         userId,
@@ -155,6 +177,27 @@ const postsSlice = createSlice({
                 }
                 console.log(action.payload)
                 state.posts.push(action.payload)
+                })
+                .addCase(updatePost.fulfilled, (state: any, action: any) => {
+                if (!action.payload?.id) {
+                    console.log('Update could not complete')
+                    console.log(action.payload)
+                    return;
+                }
+                const { id } = action.payload;
+                action.payload.date = new Date().toISOString();
+                const posts = state.posts.filter((post: any) => post.id !== id);
+                state.posts = [...posts, action.payload];
+                })
+                .addCase(deletePost.fulfilled, (state: any, action: any) => {
+                if (!action.payload?.id) {
+                    console.log('Delete could not complete')
+                    console.log(action.payload)
+                    return;
+                }
+                const { id } = action.payload;
+                const posts = state.posts.filter((post: any) => post.id !== id);
+                state.posts = posts;
             })
             }
 })
@@ -162,7 +205,7 @@ const postsSlice = createSlice({
 export const selectAllPosts = (state: any) => state.posts.posts;
 export const getPostsStatus = (state: any) => state.posts.status;
 export const getPostsError = (state: any) => state.posts.error;
-export const selectPostById = (state: any, postId: number | string) =>
+export const selectPostById = (state: any, postId: number) =>
     state.posts.posts.find((post: Post) => post.id === postId);
 
 export const { postAdded, reactionAdded } = postsSlice.actions;
