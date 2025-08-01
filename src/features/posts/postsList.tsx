@@ -23,7 +23,7 @@ const PostsList = () => {
 
     let content;
     if (postStatus === 'loading') {
-        content = <p>"Loading..."</p>;
+        content = <p>Loading...</p>;
     } else if (postStatus === 'succeeded') {
         const orderedPosts = posts.slice().sort((a: { date: any; }, b: { date: string; }) => b.date.localeCompare(a.date))
         content = orderedPosts.map((post: { id: any; }) => <PostExcerpt key={post.id} post={post} />)
