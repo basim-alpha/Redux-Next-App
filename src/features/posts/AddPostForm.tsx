@@ -50,10 +50,11 @@ const AddPostForm = () => {
   ));
 
   return (
+    <div className="w-full max-w-md m-6 p-6 bg-blue-100 rounded-lg shadow-md border border-blue-200">
     <form onSubmit={handleSubmit}>
       <div>
         <label className='font-bold text-2xl mb-1' htmlFor="title">Title:</label><br />
-        <input className='bg-gray-300 rounded-md border border-gray-400 p-2 mb-4'
+        <input className='bg-white rounded-md border border-gray-400 p-2 mb-4 w-full'
           id="postTitle"
           name="postTitle"
           type="text"
@@ -67,7 +68,7 @@ const AddPostForm = () => {
 
       <div>
         <label className='font-bold text-2xl mb-1' htmlFor="postAuthor">Author:</label><br />
-        <select className ='bg-gray-300 rounded-md border border-gray-400 p-2 mb-4' id='postAuthor' value={userId} onChange={onAuthorChange}>
+        <select className ='bg-white rounded-md border border-gray-400 p-2 mb-4 w-full' id='postAuthor' value={userId} onChange={onAuthorChange}>
           <option value="">Select an author</option>
           {userOptions}
         </select>
@@ -75,7 +76,7 @@ const AddPostForm = () => {
 
       <div>
         <label className='font-bold text-2xl mb-1' htmlFor="content">Content:</label><br />
-        <input className='bg-gray-300 rounded-md border border-gray-400 p-2 mb-4'
+        <input className='bg-white rounded-md border border-gray-400 p-2 mb-4 w-full'
           id="postContent"
           name="postContent"
           type="text"
@@ -85,9 +86,10 @@ const AddPostForm = () => {
         />
       </div>
 
-      <button className='bg-blue-500 text-white rounded-md px-4 py-2 hover:bg-blue-600'
+      <button className='bg-blue-500 text-white rounded-md px-44 py-2 hover:bg-blue-600'
       disabled={!canSave} type="submit">Submit</button>
     </form>
+    </div>
   );
 };
 

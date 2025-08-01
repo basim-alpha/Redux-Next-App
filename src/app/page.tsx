@@ -15,10 +15,13 @@ export default function HomePage() {
   }, [dispatch]);
 
   return (
-    <main className="p-8">
-      <h1 className="text-2xl font-bold mb-4">Posts</h1>
-      <AddPostForm />
+   <main className="min-h-screen p-6 bg-gray-50">
+  <div className="flex items-center justify-center">
+    <AddPostForm />
+  </div>
+   <div className="flex items-center justify-center">
       <PostsList />
+      </div>
     </main>
   );
 }

@@ -95,10 +95,12 @@ const EditPostForm = ({ params }: { params: Promise<{ id: any }> } ) => {
     ))
 
     return (
+        <div className="w-full flex m-8 justify-center">
+         <div className="w-full max-w-md m-6 p-6 bg-blue-100 rounded-lg shadow-md border border-blue-200">
         <form onSubmit={handleSubmit}>
             <div>
                 <label className='font-bold text-2xl mb-1' htmlFor="postTitle">Post Title:</label><br />
-                <input className='bg-gray-300 rounded-md border border-gray-400 p-2 mb-4'
+                <input className='bg-white rounded-md border border-gray-400 p-2 mb-4 w-full'
                     id="postTitle"
                     name="postTitle"
                     type="text"
@@ -110,7 +112,7 @@ const EditPostForm = ({ params }: { params: Promise<{ id: any }> } ) => {
 
             <div>
                 <label className='font-bold text-2xl mb-1' htmlFor="postAuthor">Author:</label><br />
-                <select className ='bg-gray-300 rounded-md border border-gray-400 p-2 mb-4' 
+                <select className ='bg-white rounded-md border border-gray-400 p-2 mb-4 w-full' 
                         id='postAuthor' 
                         value={userId || ''}
                         onChange={onAuthorChanged}>
@@ -121,7 +123,7 @@ const EditPostForm = ({ params }: { params: Promise<{ id: any }> } ) => {
 
             <div>
                 <label className='font-bold text-2xl mb-1' htmlFor="postContent">Content:</label><br />
-                <input className='bg-gray-300 rounded-md border border-gray-400 p-2 mb-4'
+                <input className='bg-white rounded-md border border-gray-400 p-2 mb-4 w-full'
                     id="postContent"
                     name="postContent"
                     type="text"
@@ -130,20 +132,24 @@ const EditPostForm = ({ params }: { params: Promise<{ id: any }> } ) => {
                     required
                 />
             </div>
-
-            <button className='bg-blue-500 text-white rounded-md px-4 py-2 hover:bg-blue-600'
+            <div>
+            <button className='bg-blue-400 text-white rounded-md px-34 py-2 m-2 hover:bg-blue-600'
                     disabled={!canSave} 
                     type="submit">
                 {requestStatus === 'pending' ? 'Updating...' : 'Update Post'}
             </button>
-             <button className="deleteButton"
+            </div>
+            <div>
+             <button className="deleteButton bg-red-400 text-white rounded-md px-35 py-2 m-2 hover:bg-red-600"
                     type="button"
                     onClick={onDeletePostClicked}
                 >
                     Delete Post
                 </button>
-
+                </div>
         </form>
+        </div>
+        </div>
     )
 }
 

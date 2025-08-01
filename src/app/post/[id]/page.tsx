@@ -39,12 +39,12 @@ export default function SinglePostPage({ params }: { params: Promise<{ id: any }
     }
 
     return (
-        <div className="w-full flex mt-4">
-            <div className="rounded-lg border border-gray-300 mb-4 p-8 inline-block">
+        <div className="w-full flex m-8 justify-center">
+            <div className="rounded-lg border bg-blue-100 border-blue-200 mb-4 p-8 w-200">
                 <h1 className="text-4xl pb-2">{post.title}</h1>
                 <p className="text-gray-500 text-2xl">{post.body}</p>
                 <p className="text-gray-400 text-lg mt-2 mb-2">
-                <Link href={`/edit-post/${post.id}`} className="text-blue-500 hover:underline">Edit Post</Link>
+                <Link href={`/edit-post/${post.id}`} className="text-blue-500 hover:underline mr-1">Edit Post</Link>
                     <PostAuthor userId={post.userId} />
                     <TimeAgo timestamp={post.date} />
                 </p>
