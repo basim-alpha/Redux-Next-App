@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
 "use client";
 import { parseISO, formatDistanceToNow } from 'date-fns';
 import React from 'react';

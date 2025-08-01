@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
 import { useDispatch} from "react-redux";
 import { reactionAdded } from "./postsSlice";
 

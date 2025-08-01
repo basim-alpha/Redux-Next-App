@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
 import { createSlice, nanoid, PayloadAction, createAsyncThunk } from "@reduxjs/toolkit"
 import {sub} from "date-fns";
 import axios from "axios";

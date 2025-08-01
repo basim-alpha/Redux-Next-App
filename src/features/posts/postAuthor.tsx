@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
 import { useSelector} from "react-redux";
 import React from 'react';
 import { selectAllUsers } from "@/features/users/usersSlice";

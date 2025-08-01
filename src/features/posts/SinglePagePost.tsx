@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
 import { useSelector } from 'react-redux'
 
 import { selectPostById } from '@/features/posts/postsSlice'
