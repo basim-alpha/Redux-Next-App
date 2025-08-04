@@ -7,7 +7,7 @@ import TimeAgo from './TimeAgo';
 import ReactionButton from "./ReactionButton";
 import Link from 'next/link';
 
-const PostExcerpt = ({post}: any) => {
+const PostExcerpt = React.memo(({post}: any) => {
     console.log("PostExcerpt post Id:", post.id);
     return (
         <div  className="w-full flex mt-4">
@@ -23,6 +23,7 @@ const PostExcerpt = ({post}: any) => {
             </div>
         </div>  
     )
-}
+});
+
 
 export default PostExcerpt
